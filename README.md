@@ -23,3 +23,29 @@ README
 -	functia any_moves_possible verifica daca jocul poate continua, analizand existenta celulelor libere sau a combinarilor posibile
 -	logica pentru dificultate este gestionata prin get_obstacle_count si get_moves_by_difficulty, care ajusteaza numarul de obstacole si mutari disponibile
 
+
+3) grafica pentru salvarea jocului, undo/redo
+    Unul dintre primele lucruri realizate in acest fisier este alegerea modului de joc. Atunci cand jocul porneste, jucatorul este intrebat daca doreste sa joace in modul normal sau in modul cu timp. Acest lucru se face printr-un ecran cu textul centrat, in care utilizatorul apasa o tasta pentru a face alegerea. Daca apasa T, jocul va avea timp limitat. Daca apasa N sau ENTER, jocul va fi fara timp. Functia nu porneste cronometrul, ci doar memoreaza ce tip de joc a fost ales.
+
+    Dupa ce jocul incepe, se afiseaza in partea de sus un HUD. HUD este zona unde apar scorul curent, cel mai bun scor si, daca este cazul, numarul de mutari ramase. Sub acest HUD este desenat un panou suplimentar care contine butoanele UNDO si REDO, precum si timpul ramas, daca jocul este in modul cu timp.
+
+    Codul calculeaza centrul zonei HUD si foloseste acest centru pentru a aseza casutele UNDO si REDO, astfel incat ele sa fie aliniate.
+
+    Afisarea timpului este realizata doar daca jocul este in modul cu timp. Timpul este afisat intr-o casuta separata, sub UNDO si REDO, iar culoarea acesteia se schimba in functie de cat timp mai ramane. Cand timpul este mai mare de 10 secunde, casuta este gri. Cand timpul scade sub 10 secunde, casuta devine rosie.
+
+    Cronometrul in sine functioneaza pe baza timpului intern al Pygame. La pornirea jocului se memoreaza momentul de start, iar la fiecare frame se calculeaza cat timp a trecut de atunci. Diferenta dintre timpul total permis si timpul trecut reprezinta timpul ramas.
+
+    La fiecare desenare a ecranului, toate elementele sunt afisate din nou, iar la final se face un update complet al ferestrei, astfel incat jucatorul sa vada orice schimbare.
+
+4) modul de salvare
+    Fisierul de salvare si incarcare este cel care permite jocului sa fie inchis si redeschis fara pierderea progresului.
+
+    Atunci cand jocul este salvat, toate informatiile importante sunt puse intr-un dictionar. Acest dictionar contine tabla de joc, scorul curent, cel mai bun scor, numarul de mutari ramase, informatia despre modul cu timp, timpul ramas, obstacolele si stivele de undo si redo. Acest dictionar este scris intr-un fisier JSON.
+
+    La pornirea jocului, se verifica daca acest fisier de salvare exista. Daca nu exista, jocul porneste normal. Daca exista, utilizatorul este intrebat daca doreste sa continue jocul anterior sau sa inceapa unul nou. Aceasta intrebare este afisata intr-un ecran simplu, iar utilizatorul raspunde prin apasarea tastelor Y sau N (yes sau no).
+
+    Daca utilizatorul alege sa continue, jocul citeste fisierul JSON si restaureaza toate valorile salvate. Tabla de joc este refacuta exact asa cum era, scorurile sunt restaurate, iar starile interne, precum win screen sau undo si redo, sunt repuse in memorie.
+
+    In cazul modului cu timp, la continuarea jocului cronometrul este repornit de la momentul reluarii.
+
+    Daca utilizatorul alege sa nu continue jocul, fisierul de salvare este sters, iar jocul porneste de la zero, ca un joc nou.
