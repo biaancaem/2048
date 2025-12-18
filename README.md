@@ -1,12 +1,25 @@
 # 2048-
 
 
-README – initializarea jocului 2048
-Acest fisier se ocupa de initializarea logica a jocului 2048, rolul sau este de a crea si pregati tabla de joc inainte ca utilizatorul sa inceapa efectiv sa joace.
-La inceput, este definita o constanta pentru obstacole, reprezentate prin valoarea -1. apoi, functia create_empty_board creeaza o tabla patrata de dimensiune aleasa, in care toate celulele sunt initializate cu valoarea 0, ceea ce inseamna ca sunt libere. Pentru a evita erori, functia is_board_valid verifica daca tabla este corecta din punct de vedere logic. aceasta verifica existenta tablei, forma patrata si faptul ca toate valorile sunt permise, adica 0, obstacole sau puteri ale lui 2.
-Functia add_nr_random adauga un numar nou pe tabla, alegand o celula libera in mod aleator. valoarea adaugata este, cu probabilitate mai mare, 2, iar cu o probabilitate mai mica 4. In final, functia init_game initializeaza complet jocul. Aceasta creeaza tabla, adauga doua numere initiale, insereaza obstacole daca modul este activ si initializeaza scorul si starea jocului. Functia returneaza toate valorile necesare pentru ca jocul sa poata incepe in mod corect.
-README – logica mutarilor si regulile jocului 2048
-Acest fisier contine logica centrala a jocului 2048, fiind responsabil de modul in care tabla de joc se modifica in urma actiunilor utilizatorului. In cadrul acestui fisier este definita mai intai notiunea de obstacol, reprezentata prin valoarea -1. Obstacolele sunt celule speciale care nu pot fi mutate sau combinate si care impart tabla in segmente independente. aceasta alegere simplifica implementarea regulilor jocului, deoarece fiecare segment dintre doua obstacole poate fi tratat separat, exact ca un rand normal din jocul clasic 2048. Pentru a evita modificarea directa a tablei originale, este folosita functia copy_board, care creeaza o copie completa a tablei, pentru a putea verifica daca o mutare este valida.
-Functiile compress si merge implementeaza regulile fundamentale ale jocului. Compress are rolul de a elimina valorile zero si de a apropia toate valorile diferite de zero intr-o directie, pastrand ordinea acestora. dupa acest pas, functia merge combina valorile egale aflate una langa alta, dubland valoarea rezultata si calculand scorul obtinut. Aceste doua operatii sunt reunite in functia process_segment care proceseaza un segment de valori delimitat de obstacole, aplicand pe rand comprimarea, combinarea si o noua comprimare.
-Mutarile efective pe tabla sunt realizate prin patru functii separate: move_left, move_right, move_up si move_down. Fiecare dintre aceste functii parcurge tabla in directia corespunzatoare si aplica aceeasi logica de procesare a segmentelor. Functia move_board primeste directia sub forma unui string, apeleaza functia corespunzatoare si verifica daca tabla s-a modificat in urma mutarii. In acest fel, jocul poate decide daca o mutare este valida si daca trebuie adaugat un nou numar pe tabla.
-Pentru a stabili daca jocul poate continua, functia any_moves_possible verifica doua situatii esentiale: existenta celulelor libere si posibilitatea de a combina valori egale aflate una langa alta. Daca niciuna dintre aceste situatii nu mai este indeplinita, inseamna ca jocul a ajuns la final. In plus, fisierul contine logica pentru dificultate si moduri speciale de joc. Functia get_obstacle_count stabileste cate obstacole sunt plasate pe tabla in functie de dimensiunea acesteia si de nivelul de dificultate ales, iar functia get_moves_by_difficulty limiteaza numarul de mutari disponibile.
+README
+– initializarea jocului 2048
+•	acest fisier se ocupa de initializarea logica a jocului 2048, avand rolul de a pregati tabla de joc inainte ca utilizatorul sa inceapa efectiv sa joace
+•	este definita o constanta pentru obstacole, reprezentate prin valoarea -1, care blocheaza miscarea si combinarea numerelor
+•	functia create_empty_board creeaza o tabla patrata de dimensiune aleasa, in care toate celulele sunt initializate cu valoarea 0, ceea ce inseamna ca sunt libere
+•	pentru a preveni erori, functia is_board_valid verifica daca tabla este corecta din punct de vedere logic, asigurand existenta tablei, forma patrata si valori valide
+•	functia add_nr_random adauga un numar nou pe tabla intr-o celula libera aleasa aleator, valoarea fiind de regula 2, iar mai rar 4
+•	functia init_game initializeaza complet jocul, adaugand doua valori initiale, obstacolele daca modul este activ, scorul initial si starea jocului
+•	functia returneaza toate valorile necesare pentru ca jocul sa poata incepe intr-o stare corecta si stabila
+
+– logica mutarilor si regulile jocului 2048
+•	acest fisier contine logica centrala a jocului 2048, fiind responsabil de modul in care tabla se modifica in urma actiunilor utilizatorului
+•	obstacolele sunt definite prin valoarea -1 si impart tabla in segmente independente care sunt procesate separat
+•	pentru a evita modificarea directa a tablei originale, functia copy_board creeaza o copie completa a tablei, necesara pentru verificarea mutarilor
+•	functia compress elimina valorile zero si apropie valorile diferite de zero, pastrand ordinea acestora
+•	functia merge combina valorile egale aflate una langa alta, dubland valoarea si calculand scorul obtinut
+•	functia process_segment reuneste comprimarea si combinarea pentru un segment delimitat de obstacole
+•	mutarile sunt implementate prin patru functii separate: move_left, move_right, move_up si move_down, fiecare adaptata directiei corespunzatoare
+•	functia move_board primeste directia ca text, aplica mutarea corecta si verifica daca tabla s-a modificat
+•	functia any_moves_possible verifica daca jocul poate continua, analizand existenta celulelor libere sau a combinarilor posibile
+•	logica pentru dificultate este gestionata prin get_obstacle_count si get_moves_by_difficulty, care ajusteaza numarul de obstacole si mutari disponibile
+
