@@ -2,7 +2,7 @@
 
 
 README
-* initializarea jocului 2048
+1) initializarea jocului 2048
 -	acest fisier se ocupa de initializarea logica a jocului 2048, avand rolul de a pregati tabla de joc inainte ca utilizatorul sa inceapa efectiv sa joace
 -	este definita o constanta pentru obstacole, reprezentate prin valoarea -1, care blocheaza miscarea si combinarea numerelor
 -	functia create_empty_board creeaza o tabla patrata de dimensiune aleasa, in care toate celulele sunt initializate cu valoarea 0, ceea ce inseamna ca sunt libere
@@ -11,7 +11,7 @@ README
 -	functia init_game initializeaza complet jocul, adaugand doua valori initiale, obstacolele daca modul este activ, scorul initial si starea jocului
 -	functia returneaza toate valorile necesare pentru ca jocul sa poata incepe intr-o stare corecta si stabila
 
-* logica mutarilor si regulile jocului 2048
+2) logica mutarilor si regulile jocului 2048
 -	acest fisier contine logica centrala a jocului 2048, fiind responsabil de modul in care tabla se modifica in urma actiunilor utilizatorului
 -	obstacolele sunt definite prin valoarea -1 si impart tabla in segmente independente care sunt procesate separat
 -	pentru a evita modificarea directa a tablei originale, functia copy_board creeaza o copie completa a tablei, necesara pentru verificarea mutarilor
