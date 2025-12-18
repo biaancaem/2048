@@ -5,13 +5,7 @@ import sys
 from graphics import *
 from graphics_diana import *
 
-from obstacole_options import (
-    choose_obstacle_mode,
-    choose_obstacle_difficulty,
-    get_obstacle_count,
-    choose_moves_mode,
-    choose_moves_difficulty
-)
+from obstacole_options import *
 from board_init import init_game
 
 

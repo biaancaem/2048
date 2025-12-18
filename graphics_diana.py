@@ -65,22 +65,24 @@ def choose_time_mode(screen):
         # desenam textul in fereastra
         screen.blit(title_surface, title_rect)
 
-        #linia 1
+        # cream linia 1 cu functia render
         line1 = text_font.render("Apasa T pentru joc CU timp", True, TEXT_COLOR_DARK)
 
         # centram folosind doar width si get_width
         line1_x = width // 2 - line1.get_width() // 2
         line1_y = height // 2 - 10
+        # afisam pe ecran cu functia blit (inainte de blit trebuie sa facem
+        # textul sa fie o suprafata)
         screen.blit(line1, (line1_x, line1_y))
 
-        # linia 2
+        # cream linia 2
         line2 = text_font.render("Apasa N sau ENTER pentru joc NORMAL", True, TEXT_COLOR_DARK)
 
         line2_x = width // 2 - line2.get_width() // 2
         line2_y = height // 2 + 40
         screen.blit(line2, (line2_x, line2_y))
 
-        # actualizam fereastra cu toate schimbarile
+        # afisam pe ecran
         pygame.display.flip()
 
     # dupa iesirea din bucla, returnam ce mod a fost ales
@@ -136,7 +138,7 @@ def draw_undo_redo_panel(screen, font,
     # Pozitionam UNDO la stanga centrului HUD
     undo_x = hud_center - help_box_width - 10
 
-    # Cream un dreptunghi cu rect cu pozitia si dimensiunile lui UNDO
+    # Cream un dreptunghi cu Rect cu pozitia si dimensiunile lui UNDO
     # undo_x- pozitia orizontala, undo_redo_y- pozitia verticala,
     # help_box_width- latime, help_box_height- inaltime
     undo_rect = pygame.Rect(undo_x, undo_redo_y,
@@ -198,6 +200,8 @@ def draw_undo_redo_panel(screen, font,
         seconds = remaining_time % 60
 
         # Transformam minutele si secundele in text de forma mm:ss
+        # cu zfill completam cu 0 in fata numarului pana il facem sa
+        # aiba lungimea 2
         t_str = str(minutes).zfill(2) + ":" + str(seconds).zfill(2)
 
         # Scriem textul pt TIME
@@ -223,7 +227,7 @@ def update_timer(start_ticks, timed_mode, game_over):
     # Diferenta dintre ele = cat timp a trecut
     mili_seconds = pygame.time.get_ticks() - start_ticks
 
-    # Transformam milisecundele in secunde
+    # Transformam milisecundele in secunde(facem impartire intreaga)
     seconds = mili_seconds // 1000
 
     # Daca timpul trecut este mai mare sau egal
