@@ -71,9 +71,6 @@ Metodă utilizată pentru a seta transparența unei suprafețe grafice. În proi
 - **`pygame.display.set_mode`**
 Creeaza fereastra in care ruleaza jocul.
 
-- **`pygame.display.set_caption`**
-Seteaza numele ferestrei.
-
 - **`Surface.fill()`**
 Această metodă umple o suprafață cu o culoare specifică. Este utilizată atât pentru fundalul ferestrei, cât și pentru suprafețele de tip overlay.
 
