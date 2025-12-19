@@ -78,7 +78,7 @@ Elementele principale ale sistemului de dificultate sunt:
 - separarea clara intre logica si grafica
 initial, anumite functii combinau operatii de desenare cu reguli de joc, ceea ce facea codul greu de intretinut. Problema a fost rezolvata prin separarea completa a logicii jocului (mutari, validari, dificultati) de partea grafica, astfel incat fiecare modul sa aiba o responsabilitate clara.
 - echilibrarea nivelurilor de dificultate
-stabilirea unui numar potrivit de obstacole si mutari pentru fiecare nivel de dificultate a necesitat mai multe testari, pentru a evita situatii prea usoare sau prea frustrante. Solutia a fost folosirea unor functii dedicate care adapteaza dificultatea in functie de dimensiunea tablei si modul de joc.
+echilibrarea dificultatii jocului, in special in modul cu obstacole, a reprezentat o provocare. Numărul de obstacole trebuia adaptat atât la dimensiunea tablei, cât și la nivelul de dificultate ales. Această problemă a fost rezolvată prin implementarea unei funcții dedicate care calculează automat numărul de obstacole în funcție de acești parametri.
 - implementarea obstacolelor in logica clasica 2048
 dificultatea a fost rezolvata prin impartirea randurilor si coloanelor in segmente delimitate de obstacole, fiecare segment fiind procesat independent.
 
