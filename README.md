@@ -26,6 +26,81 @@ Aplicația implementată reprezintă o versiune extinsă a jocului 2048, dezvolt
 
 Față de implementarea clasică, aplicația oferă funcționalități suplimentare care permit configurarea jocului, precum alegerea dimensiunii tablei, activarea unui mod de joc cu obstacole și utilizarea unui mod de joc cu mutări limitate. În plus, sunt implementate ecrane dedicate pentru pornirea aplicației, afișarea regulilor jocului și gestionarea stărilor finale, precum câștigul sau pierderea.
 
+##  Utilizarea metodelor din biblioteca pygame 
+În cadrul acestui proiect am utilizat mai multe funcții și clase oferite de biblioteca **pygame**, necesare pentru realizarea interfeței grafice, gestionarea evenimentelor și afișarea elementelor vizuale. Mai jos sunt prezentate toate funcțiile din pygame utilizate efectiv în cod, împreună cu rolul fiecăreia.
+
+- **`pygame.display.set_caption()`**
+Această funcție este utilizată pentru setarea titlului ferestrei aplicației. În proiect, funcția este folosită pentru a afișa un titlu sugestiv în bara ferestrei jocului, îmbunătățind experiența utilizatorului.
+
+- **`pygame.display.flip()`**
+Funcția actualizează întregul ecran cu toate elementele desenate în cadrul frame-ului curent. Aceasta este esențială pentru afișarea modificărilor vizuale realizate în timpul jocului sau în meniuri.
+
+- **`pygame.event.get()`**
+Această funcție preia toate evenimentele generate de utilizator sau sistem, precum apăsarea tastelor, click-urile mouse-ului sau închiderea ferestrei. Este utilizată în toate ecranele interactive pentru a gestiona input-ul utilizatorului.
+
+- **`pygame.QUIT`**
+Este un tip de eveniment care indică închiderea ferestrei jocului. În proiect, acest eveniment este tratat pentru a închide aplicația în mod controlat.
+
+- **`pygame.KEYDOWN`**
+Acest eveniment este declanșat atunci când utilizatorul apasă o tastă. Este utilizat pentru navigarea prin meniuri și selectarea opțiunilor de joc.
+
+-  **`pygame.MOUSEBUTTONDOWN`**
+Eveniment care indică apăsarea unui buton al mouse-ului. În proiect, este utilizat pentru ieșirea din ecranul de tip splash.
+
+- **`pygame.Rect`**
+  Această metodă este utilizată pentru a defini dreptunghiuri invizibile care descriu poziția și dimensiunea elementelor grafice de pe ecran. În cadrul proiectului, `pygame.Rect` este folosit pentru stabilirea poziției casetelor din tablă, a panoului de scor și a altor elemente grafice. Dreptunghiurile create facilitează atât desenarea elementelor, cât și alinierea și centrarea acestora.
+
+- **`pygame.draw.rect`**
+  Metoda `pygame.draw.rect` este utilizată pentru desenarea efectivă a dreptunghiurilor pe ecran. În acest proiect, această funcție este folosită pentru afișarea casetelor din tablă, a casetelor de scor și a altor componente vizuale. Prin intermediul acestei metode se pot specifica culoarea, dimensiunea și colțurile rotunjite ale fiecărui element, contribuind la un aspect vizual plăcut.
+
+- **`pygame.Surface()`**
+Această funcție creează o suprafață grafică nouă. Este utilizată pentru realizarea overlay-urilor semi-transparente afișate în stările de GAME OVER și YOU WIN.
+
+- **`Surface.set_alpha()`**
+Metodă utilizată pentru a seta transparența unei suprafețe grafice. În proiect, este folosită pentru a crea efecte de estompare peste joc atunci când se afișează overlay-uri.
+
+- **`get_width()`**
+  Returneaza latimea unei suprafete (de exemplu fereastra sau un text), exprimata in pixeli.
+
+- **`get_height()`**
+  Returneaza inaltimea unei suprafete, exprimata in pixeli.
+
+- **`pygame.time.get_ticks()`**
+  Returneaza cate milisecunde au trecut de cand a fost apelat pygame.init()
+
+- **`pygame.display.set_mode`**
+Creeaza fereastra in care ruleaza jocul.
+
+- **`pygame.display.set_caption`**
+Seteaza numele ferestrei.
+
+- **`Surface.fill()`**
+Această metodă umple o suprafață cu o culoare specifică. Este utilizată atât pentru fundalul ferestrei, cât și pentru suprafețele de tip overlay.
+
+- **`pygame.font.SysFont()`**
+Această funcție creează un obiect de tip font folosind un font de sistem. În proiect, este utilizată pentru afișarea textului, scorurilor și mesajelor informative.
+
+- **`font.render`**
+  Metoda `font.render` este folosită pentru transformarea textului (de exemplu scorul, valorile numerice sau mesajele afișate) într-o suprafață grafică ce poate fi desenată pe ecran. Această metodă permite controlul fontului, al culorii și al netezirii marginilor textului, asigurând lizibilitate și un contrast corespunzător față de fundal.
+
+- **`pygame.image.load()`**
+Această funcție încarcă o imagine dintr-un fișier. În proiect, este utilizată pentru afișarea imaginii de start a jocului.
+
+- **`convert_alpha()`**
+Metodă utilizată pentru optimizarea imaginilor cu transparență. Aceasta îmbunătățește performanța și calitatea afișării imaginilor.
+
+- **`pygame.transform.smoothscale()`**
+Această funcție scalează o imagine la o dimensiune specificată, folosind un algoritm de interpolare care oferă o calitate mai bună a imaginii. Este utilizată pentru a adapta imaginea de start la dimensiunea ferestrei.
+
+- **`pygame.time.Clock()`**
+Această clasă este utilizată pentru controlul vitezei de rulare a aplicației. În proiect, este folosită pentru a limita jocul la un număr constant de cadre pe secundă.
+
+- **`Clock.tick()`**
+Metodă care limitează numărul de cadre pe secundă. În proiect, este utilizată pentru a asigura o rulare fluentă a aplicației.
+
+- **`blit`**
+  Metoda `blit` este utilizată pentru a copia o suprafață grafică (imagine, text sau overlay) pe suprafața principală a ferestrei de joc. În cadrul proiectului, `blit` este folosit pentru afișarea textului, a imaginilor și a suprapunerilor grafice (overlay-uri) precum ecranele de Game Over sau Win. Această metodă este esențială pentru afișarea finală a tuturor elementelor grafice pe ecran.
+
 ##  Contributie proiect - Diana Artic
 
 In cadrul acest proiect am contribuit la dezvoltarea jocului 2048, fiind implicata in special in implementarea logicii de initializare a jocului, a regulilor de mutare, precum si a sistemelor de configurare si dificultate. Accentul a fost pus pe separatea clara intre logica jocului si interfata grafica, pentru a obtine un cod clar.
@@ -116,57 +191,6 @@ In cazul modului cu timp, la continuarea jocului cronometrul este repornit de la
 
 Daca utilizatorul alege sa nu continue jocul, fisierul de salvare este sters, iar jocul porneste de la zero, ca un joc nou.
 
-##  Utilizarea metodelor din biblioteca pygame 
-În cadrul acestui proiect am utilizat mai multe functii și clase oferite de biblioteca **pygame**.
-
-
-- **`pygame.display.flip()`**
-Functia actualizeaza întregul ecran cu toate elementele desenate in cadrul frame-ului curent. Aceasta este esențiala pentru afisarea modificarilor vizuale realizate in timpul jocului sau in meniuri.
-
-- **`pygame.event.get()`**
-Aceasta functie preia toate evenimentele generate de utilizator sau sistem, precum apasarea tastelor, click-urile mouse-ului sau inchiderea ferestrei. Este utilizata in toate ecranele interactive pentru a gestiona input-ul utilizatorului.
-
-- **`pygame.QUIT`**
-Este un tip de eveniment care indica inchiderea ferestrei jocului. In proiect, acest eveniment este tratat pentru a inchide aplicatia in mod controlat.
-
-- **`pygame.KEYDOWN`**
-Acest eveniment este declansat atunci cand utilizatorul apasa o tasta. Este utilizat pentru navigarea prin meniuri si selectarea optiunilor de joc.
-
-- **`pygame.Rect`**
-  Aceasta metoda este utilizata pentru a defini dreptunghiuri invizibile care descriu pozitia si dimensiunea elementelor grafice de pe ecran. In cadrul proiectului, `pygame.Rect` este folosit pentru stabilirea pozitiei casetelor din tabla. Dreptunghiurile create faciliteaza atat desenarea elementelor, cat si alinierea si centrarea acestora.
-
-- **`pygame.draw.rect`**
-  Metoda `pygame.draw.rect` este utilizata pentru desenarea efectiva a dreptunghiurilor pe ecran. In acest proiect, aceasta functie este folosita pentru afisarea casetelor din tabla. Prin intermediul acestei metode se pot specifica culoarea, dimensiunea și colturile rotunjite ale fiecarui element, contribuind la un aspect vizual placut.
-
-- **`get_width()`**
-  Returneaza latimea unei suprafete (de exemplu fereastra sau un text), exprimata in pixeli.
-
-- **`get_height()`**
-  Returneaza inaltimea unei suprafete, exprimata in pixeli.
-
-- **`pygame.time.get_ticks()`**
-  Returneaza cate milisecunde au trecut de cand a fost apelat pygame.init()
-
-- **`pygame.display.set_mode`**
-Creeaza fereastra in care ruleaza jocul.
-
-- **`pygame.display.set_caption`**
-Seteaza numele ferestrei.
-
-- **`pygame.font.SysFont()`**
-Aceasta functie creeaza un obiect de tip font folosind un font de sistem. In proiect, este utilizata pentru afisarea textului, scorurilor si mesajelor informative.
-
-- **`font.render`**
-  Metoda `font.render` este folosita pentru transformarea textului (de exemplu scorul, valorile numerice sau mesajele afisate) într-o suprafata grafica ce poate fi desenata pe ecran. Aceasta metoda permite controlul fontului, al culorii si al netezirii marginilor textului, asigurand lizibilitate si un contrast corespunzator fata de fundal.
-
-- **`pygame.time.Clock()`**
-Aceasta clasa este utilizata pentru controlul vitezei de rulare a aplicatiei. In proiect, este folosita pentru a limita jocul la un numar constant de cadre pe secunda.
-
-- **`Clock.tick()`**
-Metoda care limiteaza numarul de cadre pe secunda. In proiect, este utilizata pentru a asigura o rulare fluenta a aplicatiei.
-
-- **`blit`**
-  Metoda `blit` este utilizata pentru a copia o suprafata grafica (imagine, text sau overlay) pe suprafata principala a ferestrei de joc. In cadrul proiectului, `blit` este folosit pentru afisarea textului, a imaginilor si a suprapunerilor grafice (overlay-uri) precum ecranele de Game Over sau Win. Aceasta metoda este esentială pentru afisarea finala a tuturor elementelor grafice pe ecran.
    
 ## Dificultăți întâmpinate și soluții aplicate
 
@@ -186,66 +210,6 @@ In cadrul acestui proiect m-am ocupat de realizarea unei părți semnificative a
 - implementarea modului de joc cu obstacole din punct de vedere al interfeței și configurării;
 - implementarea modului de joc cu mutări limitate din punct de vedere al interfeței și configurării;
 - implementarea sistemului de selectare a dificultății pentru fiecare mod de joc.
-
-##  Utilizarea metodelor din biblioteca pygame 
-În cadrul acestui proiect am utilizat mai multe funcții și clase oferite de biblioteca **pygame**, necesare pentru realizarea interfeței grafice, gestionarea evenimentelor și afișarea elementelor vizuale. Mai jos sunt prezentate toate funcțiile din pygame utilizate efectiv în cod, împreună cu rolul fiecăreia.
-
-- **`pygame.display.set_caption()`**
-Această funcție este utilizată pentru setarea titlului ferestrei aplicației. În proiect, funcția este folosită pentru a afișa un titlu sugestiv în bara ferestrei jocului, îmbunătățind experiența utilizatorului.
-
-- **`pygame.display.flip()`**
-Funcția actualizează întregul ecran cu toate elementele desenate în cadrul frame-ului curent. Aceasta este esențială pentru afișarea modificărilor vizuale realizate în timpul jocului sau în meniuri.
-
-- **`pygame.event.get()`**
-Această funcție preia toate evenimentele generate de utilizator sau sistem, precum apăsarea tastelor, click-urile mouse-ului sau închiderea ferestrei. Este utilizată în toate ecranele interactive pentru a gestiona input-ul utilizatorului.
-
-- **`pygame.QUIT`**
-Este un tip de eveniment care indică închiderea ferestrei jocului. În proiect, acest eveniment este tratat pentru a închide aplicația în mod controlat.
-
-- **`pygame.KEYDOWN`**
-Acest eveniment este declanșat atunci când utilizatorul apasă o tastă. Este utilizat pentru navigarea prin meniuri și selectarea opțiunilor de joc.
-
--  **`pygame.MOUSEBUTTONDOWN`**
-Eveniment care indică apăsarea unui buton al mouse-ului. În proiect, este utilizat pentru ieșirea din ecranul de tip splash.
-
-- **`pygame.Rect`**
-  Această metodă este utilizată pentru a defini dreptunghiuri invizibile care descriu poziția și dimensiunea elementelor grafice de pe ecran. În cadrul proiectului, `pygame.Rect` este folosit pentru stabilirea poziției casetelor din tablă, a panoului de scor și a altor elemente grafice. Dreptunghiurile create facilitează atât desenarea elementelor, cât și alinierea și centrarea acestora.
-
-- **`pygame.draw.rect`**
-  Metoda `pygame.draw.rect` este utilizată pentru desenarea efectivă a dreptunghiurilor pe ecran. În acest proiect, această funcție este folosită pentru afișarea casetelor din tablă, a casetelor de scor și a altor componente vizuale. Prin intermediul acestei metode se pot specifica culoarea, dimensiunea și colțurile rotunjite ale fiecărui element, contribuind la un aspect vizual plăcut.
-
-- **`pygame.Surface()`**
-Această funcție creează o suprafață grafică nouă. Este utilizată pentru realizarea overlay-urilor semi-transparente afișate în stările de GAME OVER și YOU WIN.
-
-- **`Surface.set_alpha()`**
-Metodă utilizată pentru a seta transparența unei suprafețe grafice. În proiect, este folosită pentru a crea efecte de estompare peste joc atunci când se afișează overlay-uri.
-
-- **`Surface.fill()`**
-Această metodă umple o suprafață cu o culoare specifică. Este utilizată atât pentru fundalul ferestrei, cât și pentru suprafețele de tip overlay.
-
-- **`pygame.font.SysFont()`**
-Această funcție creează un obiect de tip font folosind un font de sistem. În proiect, este utilizată pentru afișarea textului, scorurilor și mesajelor informative.
-
-- **`font.render`**
-  Metoda `font.render` este folosită pentru transformarea textului (de exemplu scorul, valorile numerice sau mesajele afișate) într-o suprafață grafică ce poate fi desenată pe ecran. Această metodă permite controlul fontului, al culorii și al netezirii marginilor textului, asigurând lizibilitate și un contrast corespunzător față de fundal.
-
-- **`pygame.image.load()`**
-Această funcție încarcă o imagine dintr-un fișier. În proiect, este utilizată pentru afișarea imaginii de start a jocului.
-
-- **`convert_alpha()`**
-Metodă utilizată pentru optimizarea imaginilor cu transparență. Aceasta îmbunătățește performanța și calitatea afișării imaginilor.
-
-- **`pygame.transform.smoothscale()`**
-Această funcție scalează o imagine la o dimensiune specificată, folosind un algoritm de interpolare care oferă o calitate mai bună a imaginii. Este utilizată pentru a adapta imaginea de start la dimensiunea ferestrei.
-
-- **`pygame.time.Clock()`**
-Această clasă este utilizată pentru controlul vitezei de rulare a aplicației. În proiect, este folosită pentru a limita jocul la un număr constant de cadre pe secundă.
-
-- **`Clock.tick()`**
-Metodă care limitează numărul de cadre pe secundă. În proiect, este utilizată pentru a asigura o rulare fluentă a aplicației.
-
-- **`blit`**
-  Metoda `blit` este utilizată pentru a copia o suprafață grafică (imagine, text sau overlay) pe suprafața principală a ferestrei de joc. În cadrul proiectului, `blit` este folosit pentru afișarea textului, a imaginilor și a suprapunerilor grafice (overlay-uri) precum ecranele de Game Over sau Win. Această metodă este esențială pentru afișarea finală a tuturor elementelor grafice pe ecran.
 
 ## Descrierea functiilor implementate
 In cadrul acestui proiect au fost implementate mai multe functii,fiecare avand un rol bine definit in realizarea interfetei grafice.
