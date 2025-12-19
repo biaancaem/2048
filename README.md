@@ -85,9 +85,8 @@ De asemenea, **echilibrarea dificultății jocului**, în special în modul cu o
 
 ##  Contributie proiect - Diana Draica
 
-In acest proiect am contribuit prin 
+In acest proiect am contribuit prin:
 
----
 ## Grafica pentru salvarea jocului, undo/redo
 
 Unul dintre primele lucruri realizate in acest fisier este alegerea modului de joc. Atunci cand jocul porneste, jucatorul este intrebat daca doreste sa joace in modul normal sau in modul cu timp. Acest lucru se face printr-un ecran cu textul centrat, in care utilizatorul apasa o tasta pentru a face alegerea. Daca apasa T, jocul va avea timp limitat. Daca apasa N sau ENTER, jocul va fi fara timp. Functia nu porneste cronometrul, ci doar memoreaza ce tip de joc a fost ales.
@@ -216,6 +215,8 @@ Funcția realizează următoarele operații:
 - desenează tabla de joc și poziționează fiecare casetă corect;
 - afișează valorile numerice și obstacolele;
 - afișează overlay-urile pentru stările GAME OVER și YOU WIN.
+
+---
 
 - `show_start_screen(screen)`
 
