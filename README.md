@@ -77,8 +77,8 @@ Față de implementarea clasică, aplicația oferă funcționalități supliment
     Daca utilizatorul alege sa nu continue jocul, fisierul de salvare este sters, iar jocul porneste de la zero, ca un joc nou.
 
 
-##  Contributie proiect -Bianca
-In cadrul acestui proiect m-am ocupat aproape integral de ralizarea partii de grafica si a sistemelor de configurare ale jocului. Responsabilitatile mele au fost:
+##  Contributie proiect - Bianca
+In cadrul acestui proiect m-am ocupat de realizarea unei părți semnificative a interfeței grafice și a sistemelor de configurare ale jocului. Responsabilitatile mele au fost:
 
 - dezvoltarea interfeței grafice a jocului;
 - afișarea tablei de joc și a elementelor vizuale;
@@ -156,12 +156,12 @@ Metodă care limitează numărul de cadre pe secundă. În proiect, este utiliza
 In cadrul acestui proiect au fost implementate mai multe functii,fiecare avand un rol bine definit in realizarea interfetei grafice.
 Fisierul `graphics.py` contine urmatoarele functii:
 
--`dimensiune_fereastra(board_size)`
+- `dimensiune_fereastra(board_size)`
     Această funcție calculează dimensiunea ferestrei de joc în funcție de dimensiunea tablei alese de utilizator.  
 Funcția ia în considerare dimensiunea casetelor, spațiul dintre acestea și înălțimea panoului de informații, asigurând afișarea corectă a tuturor elementelor grafice.  
 Rezultatul returnat este un tuplu format din lățimea și înălțimea ferestrei.
 
--`draw_board(screen, board, font, score, best_score, moves_left, remaining_time, timed_mode, game_over, is_new_best, has_won, win_screen_active)`
+- `draw_board(screen, board, font, score, best_score, moves_left, remaining_time, timed_mode, game_over, is_new_best, has_won, win_screen_active)`
 
 Aceasta este funcția principală de desenare a jocului.
 Rolul său este de a reda vizual starea curentă a jocului la fiecare actualizare a ecranului.
