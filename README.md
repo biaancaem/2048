@@ -25,6 +25,7 @@ README
 
 
 3) grafica pentru salvarea jocului, undo/redo
+
     Unul dintre primele lucruri realizate in acest fisier este alegerea modului de joc. Atunci cand jocul porneste, jucatorul este intrebat daca doreste sa joace in modul normal sau in modul cu timp. Acest lucru se face printr-un ecran cu textul centrat, in care utilizatorul apasa o tasta pentru a face alegerea. Daca apasa T, jocul va avea timp limitat. Daca apasa N sau ENTER, jocul va fi fara timp. Functia nu porneste cronometrul, ci doar memoreaza ce tip de joc a fost ales.
 
     Dupa ce jocul incepe, se afiseaza in partea de sus un HUD. HUD este zona unde apar scorul curent, cel mai bun scor si, daca este cazul, numarul de mutari ramase. Sub acest HUD este desenat un panou suplimentar care contine butoanele UNDO si REDO, precum si timpul ramas, daca jocul este in modul cu timp.
@@ -37,7 +38,8 @@ README
 
     La fiecare desenare a ecranului, toate elementele sunt afisate din nou, iar la final se face un update complet al ferestrei, astfel incat jucatorul sa vada orice schimbare.
 
-4) modul de salvare
+5) modul de salvare
+
     Fisierul de salvare si incarcare este cel care permite jocului sa fie inchis si redeschis fara pierderea progresului.
 
     Atunci cand jocul este salvat, toate informatiile importante sunt puse intr-un dictionar. Acest dictionar contine tabla de joc, scorul curent, cel mai bun scor, numarul de mutari ramase, informatia despre modul cu timp, timpul ramas, obstacolele si stivele de undo si redo. Acest dictionar este scris intr-un fisier JSON.
