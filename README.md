@@ -83,8 +83,11 @@ stabilirea unui numar potrivit de obstacole si mutari pentru fiecare nivel de di
 dificultatea a fost rezolvata prin impartirea randurilor si coloanelor in segmente delimitate de obstacole, fiecare segment fiind procesat independent.
 
 ##  Contributie proiect - Diana Draica
-3) grafica pentru salvarea jocului, undo/redo
 
+In acest proiect am contribuit prin 
+
+## grafica pentru salvarea jocului, undo/redo
+-
     Unul dintre primele lucruri realizate in acest fisier este alegerea modului de joc. Atunci cand jocul porneste, jucatorul este intrebat daca doreste sa joace in modul normal sau in modul cu timp. Acest lucru se face printr-un ecran cu textul centrat, in care utilizatorul apasa o tasta pentru a face alegerea. Daca apasa T, jocul va avea timp limitat. Daca apasa N sau ENTER, jocul va fi fara timp. Functia nu porneste cronometrul, ci doar memoreaza ce tip de joc a fost ales.
 
     Dupa ce jocul incepe, se afiseaza in partea de sus un HUD. HUD este zona unde apar scorul curent, cel mai bun scor si, daca este cazul, numarul de mutari ramase. Sub acest HUD este desenat un panou suplimentar care contine butoanele UNDO si REDO, precum si timpul ramas, daca jocul este in modul cu timp.
@@ -97,8 +100,8 @@ dificultatea a fost rezolvata prin impartirea randurilor si coloanelor in segmen
 
     La fiecare desenare a ecranului, toate elementele sunt afisate din nou, iar la final se face un update complet al ferestrei, astfel incat jucatorul sa vada orice schimbare.
 
-5) modul de salvare
-
+## modul de salvare
+-
     Fisierul de salvare si incarcare este cel care permite jocului sa fie inchis si redeschis fara pierderea progresului.
 
     Atunci cand jocul este salvat, toate informatiile importante sunt puse intr-un dictionar. Acest dictionar contine tabla de joc, scorul curent, cel mai bun scor, numarul de mutari ramase, informatia despre modul cu timp, timpul ramas, obstacolele si stivele de undo si redo. Acest dictionar este scris intr-un fisier JSON.
@@ -110,7 +113,14 @@ dificultatea a fost rezolvata prin impartirea randurilor si coloanelor in segmen
     In cazul modului cu timp, la continuarea jocului cronometrul este repornit de la momentul reluarii.
 
     Daca utilizatorul alege sa nu continue jocul, fisierul de salvare este sters, iar jocul porneste de la zero, ca un joc nou.
+   
+## Dificultăți întâmpinate și soluții aplicate
 
+O dificultate a fost alinierea corecta a elementelor din HUD. Butoanele UNDO si REDO, scorurile si afisarea timpului trebuiau pozitionate coerent si centrate, indiferent de dimensiunea ferestrei. Acest lucru a necesitat calcule suplimentare pentru pozitionare si testare vizuala pentru a evita suprapunerile sau spatiile neuniforme.
+
+Implementarea sistemului de undo si redo a fost, de asemenea, o provocare. A fost important ca fiecare mutare valida sa salveze corect starea tablei si scorul, fara a afecta performanta jocului. De asemenea, a fost necesara golirea stivei de redo atunci cand se face o mutare noua, pentru a pastra un comportament corect si intuitiv.
+
+Salvarea si incarcarea jocului a ridicat dificultati legate de consistenta datelor. Toate starile importante ale jocului, inclusiv tabla, scorurile, mutarile ramase, modul de joc si stivele de undo si redo, au trebuit salvate si restaurate exact asa cum erau. Orice informatie omisa ar fi dus la un comportament incorect dupa reincarcare.
 
 ##  Contributie proiect - Bianca
 In cadrul acestui proiect m-am ocupat de realizarea unei părți semnificative a interfeței grafice și a sistemelor de configurare ale jocului. Responsabilitatile mele au fost:
