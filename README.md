@@ -26,9 +26,6 @@ Aplicația implementată reprezintă o versiune extinsă a jocului 2048, dezvolt
 
 Față de implementarea clasică, aplicația oferă funcționalități suplimentare care permit configurarea jocului, precum alegerea dimensiunii tablei, activarea unui mod de joc cu obstacole și utilizarea unui mod de joc cu mutări limitate. În plus, sunt implementate ecrane dedicate pentru pornirea aplicației, afișarea regulilor jocului și gestionarea stărilor finale, precum câștigul sau pierderea.
 
-
-
-
 1) initializarea jocului 2048
 -	acest fisier se ocupa de initializarea logica a jocului 2048, avand rolul de a pregati tabla de joc inainte ca utilizatorul sa inceapa efectiv sa joace
 -	este definita o constanta pentru obstacole, reprezentate prin valoarea -1, care blocheaza miscarea si combinarea numerelor
@@ -80,8 +77,8 @@ Față de implementarea clasică, aplicația oferă funcționalități supliment
     Daca utilizatorul alege sa nu continue jocul, fisierul de salvare este sters, iar jocul porneste de la zero, ca un joc nou.
 
 
-## ** Contributie proiect -Bianca **
-    In cadrul acestui proiect m-am ocupat aproape integral de ralizarea partii de grafica si a sistemelor de configurare ale jocului. Responsabilitatile mele au fost:
+##  Contributie proiect -Bianca
+In cadrul acestui proiect m-am ocupat aproape integral de ralizarea partii de grafica si a sistemelor de configurare ale jocului. Responsabilitatile mele au fost:
 
 - dezvoltarea interfeței grafice a jocului;
 - afișarea tablei de joc și a elementelor vizuale;
@@ -91,8 +88,8 @@ Față de implementarea clasică, aplicația oferă funcționalități supliment
 - dezvoltarea modului de joc cu mutări limitate;
 - dezvoltarea sistemului de selectare a dificultății pentru fiecare mod.
 
-##  ** Utilizarea metodelor din biblioteca pygame **
-    În cadrul acestui proiect am utilizat mai multe funcții și clase oferite de biblioteca **pygame**, necesare pentru realizarea interfeței grafice, gestionarea evenimentelor și afișarea elementelor vizuale. Mai jos sunt prezentate toate funcțiile din pygame utilizate efectiv în cod, împreună cu rolul fiecăreia.
+##  Utilizarea metodelor din biblioteca pygame 
+În cadrul acestui proiect am utilizat mai multe funcții și clase oferite de biblioteca **pygame**, necesare pentru realizarea interfeței grafice, gestionarea evenimentelor și afișarea elementelor vizuale. Mai jos sunt prezentate toate funcțiile din pygame utilizate efectiv în cod, împreună cu rolul fiecăreia.
 
 - **`pygame.display.set_caption()`**
 Această funcție este utilizată pentru setarea titlului ferestrei aplicației. În proiect, funcția este folosită pentru a afișa un titlu sugestiv în bara ferestrei jocului, îmbunătățind experiența utilizatorului.
@@ -115,7 +112,7 @@ Eveniment care indică apăsarea unui buton al mouse-ului. În proiect, este uti
 - **`pygame.Rect`**
   Această metodă este utilizată pentru a defini dreptunghiuri invizibile care descriu poziția și dimensiunea elementelor grafice de pe ecran. În cadrul proiectului, `pygame.Rect` este folosit pentru stabilirea poziției casetelor din tablă, a panoului de scor și a altor elemente grafice. Dreptunghiurile create facilitează atât desenarea elementelor, cât și alinierea și centrarea acestora.
 
-- **`pygame.draw.rect`*
+- **`pygame.draw.rect`**
   Metoda `pygame.draw.rect` este utilizată pentru desenarea efectivă a dreptunghiurilor pe ecran. În acest proiect, această funcție este folosită pentru afișarea casetelor din tablă, a casetelor de scor și a altor componente vizuale. Prin intermediul acestei metode se pot specifica culoarea, dimensiunea și colțurile rotunjite ale fiecărui element, contribuind la un aspect vizual plăcut.
 
 - **`pygame.Surface()`**
@@ -156,17 +153,17 @@ Metodă care limitează numărul de cadre pe secundă. În proiect, este utiliza
   Metoda `blit` este utilizată pentru a copia o suprafață grafică (imagine, text sau overlay) pe suprafața principală a ferestrei de joc. În cadrul proiectului, `blit` este folosit pentru afișarea textului, a imaginilor și a suprapunerilor grafice (overlay-uri) precum ecranele de Game Over sau Win. Această metodă este esențială pentru afișarea finală a tuturor elementelor grafice pe ecran.
 
 ## ** Descrierea functiilor implementate**
-    In cadrul acestui proiect au fost implementate mai multe functii,fiecare avand un rol bine definit in realizarea interfetei grafice:
-    Fisierul `graphics.py` contine urmatoarele functii:
+In cadrul acestui proiect au fost implementate mai multe functii,fiecare avand un rol bine definit in realizarea interfetei grafice.
+Fisierul `graphics.py` contine urmatoarele functii:
 
-### **`dimensiune_fereastra(board_size)`**
+-`dimensiune_fereastra(board_size)`
     Această funcție calculează dimensiunea ferestrei de joc în funcție de dimensiunea tablei alese de utilizator.  
 Funcția ia în considerare dimensiunea casetelor, spațiul dintre acestea și înălțimea panoului de informații, asigurând afișarea corectă a tuturor elementelor grafice.  
 Rezultatul returnat este un tuplu format din lățimea și înălțimea ferestrei.
 
-### **`draw_board(screen, board, font, score, best_score, moves_left, remaining_time, timed_mode, game_over, is_new_best, has_won, win_screen_active)`**
+- `draw_board(screen, board, font, score, best_score, moves_left, remaining_time, timed_mode, game_over, is_new_best, has_won, win_screen_active)`
 
-    Aceasta este funcția principală de desenare a jocului.
+Aceasta este funcția principală de desenare a jocului.
 Rolul său este de a reda vizual starea curentă a jocului la fiecare actualizare a ecranului.
 
 Funcția realizează următoarele operații:
@@ -176,43 +173,43 @@ Funcția realizează următoarele operații:
 - afișează valorile numerice și obstacolele;
 - afișează overlay-urile pentru stările GAME OVER și YOU WIN.
 
-### **`show_start_screen(screen)`**
+-`show_start_screen(screen)`
 
 Această funcție afișează ecranul de start al jocului, care conține titlul, regulile jocului și opțiunile pentru alegerea dimensiunii tablei.  
 Interacțiunea se face prin tastatură, iar funcția returnează dimensiunea tablei selectate de utilizator.
 
-### **`show_logo_screen(screen)`**
+-`show_logo_screen(screen)`
 
 Funcția afișează un ecran de tip splash la pornirea aplicației.  
 Aceasta încarcă și afișează o imagine reprezentativă pentru joc și așteaptă o acțiune din partea utilizatorului (tastă sau click) pentru a continua.
 
 Fisierul `obstacole_options.py` contine urmatoarele functii:
-### **`get_obstacle_count(board_size, difficulty)`**
+- `get_obstacle_count(board_size, difficulty)`
 
 Această funcție calculează numărul de obstacole ce vor fi plasate pe tabla de joc, în funcție de dimensiunea tablei și de dificultatea aleasă.
 Funcția permite scalarea corectă a dificultății pentru diferite dimensiuni ale tablei.
 
-### **`choose_obstacle_mode(screen)`**
+- `choose_obstacle_mode(screen)`
 
 Funcția afișează un ecran de selecție care permite utilizatorului să aleagă între modul de joc normal și modul cu obstacole.
 Selecția este realizată prin apăsarea tastelor corespunzătoare.
 
-### **`choose_obstacle_difficulty(screen)`**
+- `choose_obstacle_difficulty(screen)`
 
 Această funcție permite utilizatorului să selecteze dificultatea modului cu obstacole.
 În funcție de opțiunea aleasă, funcția returnează nivelul de dificultate selectat.
 
-### **`choose_moves_mode(screen)`**
+- `choose_moves_mode(screen)`
 
 Funcția oferă utilizatorului posibilitatea de a activa sau dezactiva modul de joc cu mutări limitate.
 Aceasta returnează opțiunea aleasă de utilizator.
 
-### **`choose_moves_difficulty(screen)`**
+- `choose_moves_difficulty(screen)`
 
 Această funcție stabilește numărul maxim de mutări disponibile în joc, în funcție de dificultatea aleasă.
 Valoarea returnată este utilizată ulterior pentru controlul desfășurării jocului.
 
-## **Dificultăți întâmpinate și soluții aplicate**
+## Dificultăți întâmpinate și soluții aplicate
 
 O primă dificultate întâmpinată a fost **gestionarea corectă a evenimentelor de la tastatură și mouse în biblioteca pygame**. Inițial, anumite apăsări de taste nu erau recunoscute sau produceau comportamente neașteptate. Această problemă a fost rezolvată prin utilizarea funcției `pygame.event.get()` și prin tratarea explicită a evenimentelor de tip `pygame.KEYDOWN` și `pygame.MOUSEBUTTONDOWN`, separând logica de input pentru fiecare ecran al aplicației.
 
