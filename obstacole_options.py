@@ -2,25 +2,6 @@ import pygame
 import sys
 from graphics import TEXT_COLOR_DARK
 
-
-def get_obstacle_count(board_size, difficulty):
-        # Daca dificultatea este usoara
-    if difficulty == "easy":
-        if board_size == 4:
-            return 2
-        elif board_size == 5:
-            return 3
-        elif board_size == 6:
-            return 4
-
-    # Daca dificultatea este grea
-    else:
-        if board_size == 4:
-            return 4
-        elif board_size == 5:
-            return 6
-        elif board_size == 6:
-            return 8
 #functia afiseaza un ecran cu intrebarea referitoare la obstacole
 def choose_obstacle_mode(screen):
     #luam lungimea si latimea ferestrei pentru a centra textul
