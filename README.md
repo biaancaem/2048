@@ -124,7 +124,7 @@ Implementarea sistemului de undo si redo a fost, de asemenea, o provocare. A fos
 
 Salvarea si incarcarea jocului a ridicat dificultati legate de consistenta datelor. Toate starile importante ale jocului, inclusiv tabla, scorurile, mutarile ramase, modul de joc si stivele de undo si redo, au trebuit salvate si restaurate exact asa cum erau. Orice informatie omisa ar fi dus la un comportament incorect dupa reincarcare.
 
-##  Contributie proiect - Bianca
+##  Contributie proiect - Bianca Militaru
 In cadrul acestui proiect m-am ocupat de realizarea unei părți semnificative a interfeței grafice și a sistemelor de configurare ale jocului. Responsabilitatile mele au fost:
 
 - dezvoltarea interfeței grafice a jocului;
@@ -216,7 +216,6 @@ Funcția realizează următoarele operații:
 - afișează valorile numerice și obstacolele;
 - afișează overlay-urile pentru stările GAME OVER și YOU WIN.
 
----
 
 - `show_start_screen(screen)`
 
