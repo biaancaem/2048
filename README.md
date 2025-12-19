@@ -2,9 +2,9 @@
 
 ## Autori și contribuții
 Proiectul a fost realizat în echipă, fiecare membru având contribuții distincte în dezvoltarea proiectului.
-- **Militaru Elena-Bianca** – interfață grafică, meniuri de configurare, moduri de joc (obstacole, mutări limitate), ecrane de start și final, documentație
-- **Artîc Diana-Andreea** – logică de joc, manipularea tablei, mutarea și combinarea casetelor
-- **Draica Diana Andreea** – gestionarea scorului, condiții de câștig/pierdere, functii de undo/redo,optiune pentru timp
+- **Militaru Elena-Bianca** – interfață grafică, meniuri de configurare, ecrane de start și final 
+- **Artîc Diana-Andreea** – logică de joc, manipularea tablei, mutarea și combinarea casetelor, moduri de joc (obstacole, mutări limitate)
+- **Draica Diana Andreea** – gestionarea scorului, condiții de câștig/pierdere, functii de undo/redo, optiune pentru timp si sunet
 
 ## Link catre repository
     Codul sursă al proiectului este disponibil la următorul link:
@@ -26,28 +26,64 @@ Aplicația implementată reprezintă o versiune extinsă a jocului 2048, dezvolt
 
 Față de implementarea clasică, aplicația oferă funcționalități suplimentare care permit configurarea jocului, precum alegerea dimensiunii tablei, activarea unui mod de joc cu obstacole și utilizarea unui mod de joc cu mutări limitate. În plus, sunt implementate ecrane dedicate pentru pornirea aplicației, afișarea regulilor jocului și gestionarea stărilor finale, precum câștigul sau pierderea.
 
-1) initializarea jocului 2048
--	acest fisier se ocupa de initializarea logica a jocului 2048, avand rolul de a pregati tabla de joc inainte ca utilizatorul sa inceapa efectiv sa joace
--	este definita o constanta pentru obstacole, reprezentate prin valoarea -1, care blocheaza miscarea si combinarea numerelor
--	functia create_empty_board creeaza o tabla patrata de dimensiune aleasa, in care toate celulele sunt initializate cu valoarea 0, ceea ce inseamna ca sunt libere
--	pentru a preveni erori, functia is_board_valid verifica daca tabla este corecta din punct de vedere logic, asigurand existenta tablei, forma patrata si valori valide
--	functia add_nr_random adauga un numar nou pe tabla intr-o celula libera aleasa aleator, valoarea fiind de regula 2, iar mai rar 4
--	functia init_game initializeaza complet jocul, adaugand doua valori initiale, obstacolele daca modul este activ, scorul initial si starea jocului
--	functia returneaza toate valorile necesare pentru ca jocul sa poata incepe intr-o stare corecta si stabila
+##  Contributie proiect - Diana Artic
 
-2) logica mutarilor si regulile jocului 2048
--	acest fisier contine logica centrala a jocului 2048, fiind responsabil de modul in care tabla se modifica in urma actiunilor utilizatorului
--	obstacolele sunt definite prin valoarea -1 si impart tabla in segmente independente care sunt procesate separat
--	pentru a evita modificarea directa a tablei originale, functia copy_board creeaza o copie completa a tablei, necesara pentru verificarea mutarilor
--	functia compress elimina valorile zero si apropie valorile diferite de zero, pastrand ordinea acestora
--	functia merge combina valorile egale aflate una langa alta, dubland valoarea si calculand scorul obtinut
--	functia process_segment reuneste comprimarea si combinarea pentru un segment delimitat de obstacole
--	mutarile sunt implementate prin patru functii separate: move_left, move_right, move_up si move_down, fiecare adaptata directiei corespunzatoare
--	functia move_board primeste directia ca text, aplica mutarea corecta si verifica daca tabla s-a modificat
--	functia any_moves_possible verifica daca jocul poate continua, analizand existenta celulelor libere sau a combinarilor posibile
--	logica pentru dificultate este gestionata prin get_obstacle_count si get_moves_by_difficulty, care ajusteaza numarul de obstacole si mutari disponibile
+In cadrul acestui proiect am contribuit la dezvoltarea jocului 2048, fiind implicata in special in implementarea logicii de initializare a jocului, a regulilor de mutare, precum si a sistemelor de configurare si dificultate. Accentul a fost pus pe separarea clara intre logica jocului si interfata grafica, pentru a obtine un cod clar.
+---
 
+## Initializarea jocului 2048
 
+Acest fisier se ocupa de initializarea logica a jocului 2048, avand rolul de a pregati tabla de joc inainte ca utilizatorul sa inceapa efectiv sa joace.
+
+Principalele responsabilitati ale acestui fisier sunt:
+
+- definirea unei constante pentru obstacole, reprezentate prin valoarea `-1`, care blocheaza miscarea si combinarea numerelor;
+- crearea tablei de joc prin functia `create_empty_board`, care genereaza o tabla patrata de dimensiune aleasa, initializata complet cu valoarea `0`, corespunzatoare celulelor libere;
+- verificarea corectitudinii tablei folosind functia `is_board_valid`, care asigura existenta tablei, forma patrata si utilizarea exclusiva a valorilor permise;
+- adaugarea numerelor initiale pe tabla prin functia `add_nr_random`, care plaseaza in mod aleator valori de `2` sau `4` in celule libere, respectand regulile clasice ale jocului;
+- initializarea completa a jocului prin functia `init_game`, care adauga doua valori initiale, insereaza obstacolele daca modul este activ, initializeaza scorul si stabileste starea initiala a jocului;
+- returnarea tuturor valorilor necesare pentru pornirea jocului, astfel incat celelalte componente ale aplicatiei sa poata continua executia in mod corect.
+
+---
+
+## Logica mutarilor si regulile jocului 2048
+
+Acest fisier contine logica centrala a jocului 2048, fiind responsabil de modul in care tabla de joc se modifica in urma actiunilor utilizatorului. Aici sunt implementate regulile de miscare, combinare a valorilor si conditiile de continuare sau terminare a jocului.
+
+Functionalitatile principale implementate in acest fisier sunt:
+
+- definirea obstacolelor prin valoarea `-1`, care impart tabla in segmente independente procesate separat;
+- utilizarea functiei `copy_board` pentru crearea unei copii complete a tablei, evitand modificarea directa a starii originale si permitand verificarea mutarilor valide;
+- implementarea functiei `compress`, care elimina valorile zero si apropie valorile diferite de zero in directia mutarii;
+- implementarea functiei `merge`, care combina valorile egale aflate una langa alta, dubland valoarea obtinuta si calculand scorul corespunzator;
+- reunirea acestor operatii in functia `process_segment`, care proceseaza corect fiecare segment delimitat de obstacole;
+- implementarea mutarilor prin patru functii distincte: `move_left`, `move_right`, `move_up` si `move_down`, fiecare adaptata directiei corespunzatoare;
+- utilizarea functiei `move_board` ca interfata generala pentru aplicarea unei mutari si verificarea modificarii tablei;
+- verificarea posibilitatii de continuare a jocului prin functia `any_moves_possible`, care analizeaza existenta celulelor libere sau a combinarilor posibile.
+
+---
+
+## Sistem de dificultati si moduri de joc
+
+Pentru a oferi o experienta de joc variata, aplicatia include mai multe niveluri de dificultate si moduri speciale de joc. Acestea influenteaza atat dinamica jocului, cat si strategiile necesare pentru a ajunge la valoarea 2048.
+Elementele principale ale sistemului de dificultate sunt:
+
+- dificultatea obstacolelor, care controleaza numarul de obstacole plasate pe tabla in functie de dimensiunea acesteia si de nivelul ales;
+- modul cu mutari limitate, in care jucatorul are la dispozitie un numar fix de mutari pentru a atinge obiectivul;
+- functia `get_obstacle_count`, care calculeaza automat numarul de obstacole in functie de dimensiunea tablei si dificultatea selectata;
+- functia `get_moves_by_difficulty`, care stabileste numarul maxim de mutari permise pentru fiecare nivel de dificultate;
+- adaptarea automata a dificultatii pentru a mentine un echilibru
+
+---
+ ## Dificultăți întâmpinate și soluții aplicate
+-separarea clara intre logica si grafica
+initial, anumite functii combinau operatii de desenare cu reguli de joc, ceea ce facea codul greu de intretinut. Problema a fost rezolvata prin separarea completa a logicii jocului (mutari, validari, dificultati) de partea grafica, astfel incat fiecare modul sa aiba o responsabilitate clara.
+-echilibrarea nivelurilor de dificultate
+stabilirea unui numar potrivit de obstacole si mutari pentru fiecare nivel de dificultate a necesitat mai multe testari, pentru a evita situatii prea usoare sau prea frustrante. Solutia a fost folosirea unor functii dedicate care adapteaza dificultatea in functie de dimensiunea tablei si modul de joc.
+-implementarea obstacolelor in logica clasica 2048
+dificultatea a fost rezolvata prin impartirea randurilor si coloanelor in segmente delimitate de obstacole, fiecare segment fiind procesat independent.
+
+##  Contributie proiect - Diana Draica
 3) grafica pentru salvarea jocului, undo/redo
 
     Unul dintre primele lucruri realizate in acest fisier este alegerea modului de joc. Atunci cand jocul porneste, jucatorul este intrebat daca doreste sa joace in modul normal sau in modul cu timp. Acest lucru se face printr-un ecran cu textul centrat, in care utilizatorul apasa o tasta pentru a face alegerea. Daca apasa T, jocul va avea timp limitat. Daca apasa N sau ENTER, jocul va fi fara timp. Functia nu porneste cronometrul, ci doar memoreaza ce tip de joc a fost ales.
