@@ -2,7 +2,7 @@
 
 ## Autori și contribuții
 Proiectul a fost realizat în echipă, fiecare membru având contribuții distincte în dezvoltarea proiectului.
-- **Militaru Elena-Bianca** – interfață grafică, meniuri de configurare, ecrane de start și final 
+- **Militaru Elena-Bianca** – dezvoltarea interfeței grafice a aplicației, implementarea meniurilor de configurare pentru modurile de joc, realizarea ecranelor de start și final
 - **Artîc Diana-Andreea** – logică de joc, manipularea tablei, mutarea și combinarea casetelor, moduri de joc (obstacole, mutări limitate)
 - **Draica Diana Andreea** – gestionarea scorului, condiții de câștig/pierdere, functii de undo/redo, optiune pentru timp si sunet
 
@@ -81,6 +81,7 @@ initial, anumite functii combinau operatii de desenare cu reguli de joc, ceea ce
 echilibrarea dificultatii jocului, in special in modul cu obstacole, a reprezentat o provocare. Numărul de obstacole trebuia adaptat atât la dimensiunea tablei, cât și la nivelul de dificultate ales. Această problemă a fost rezolvată prin implementarea unei funcții dedicate care calculează automat numărul de obstacole în funcție de acești parametri.
 - implementarea obstacolelor in logica clasica 2048
 dificultatea a fost rezolvata prin impartirea randurilor si coloanelor in segmente delimitate de obstacole, fiecare segment fiind procesat independent.
+De asemenea, **echilibrarea dificultății jocului**, în special în modul cu obstacole, a reprezentat o provocare. Numărul de obstacole trebuia adaptat atât la dimensiunea tablei, cât și la nivelul de dificultate ales. Această problemă a fost rezolvată prin implementarea unei funcții dedicate care calculează automat numărul de obstacole în funcție de acești parametri.
 
 ##  Contributie proiect - Diana Draica
 
@@ -128,12 +129,12 @@ Salvarea si incarcarea jocului a ridicat dificultati legate de consistenta datel
 In cadrul acestui proiect m-am ocupat de realizarea unei părți semnificative a interfeței grafice și a sistemelor de configurare ale jocului. Responsabilitatile mele au fost:
 
 - dezvoltarea interfeței grafice a jocului;
-- afișarea tablei de joc și a elementelor vizuale;
+- afișarea tablei de joc și a elementelor vizuale aferente;
 - afisarea ecranelor de start, logo și reguli;
-- dezvoltarea meniurilor interactive pentru configurarea jocului;
-- dezvoltarea modului de joc cu obstacole;
-- dezvoltarea modului de joc cu mutări limitate;
-- dezvoltarea sistemului de selectare a dificultății pentru fiecare mod.
+- implementare meniurilor interactive pentru configurarea modurilor de joc;
+- implementarea modului de joc cu obstacole din punct de vedere al interfeței și configurării;
+- implementarea modului de joc cu mutări limitate din punct de vedere al interfeței și configurării;
+- implementarea sistemului de selectare a dificultății pentru fiecare mod de joc.
 
 ##  Utilizarea metodelor din biblioteca pygame 
 În cadrul acestui proiect am utilizat mai multe funcții și clase oferite de biblioteca **pygame**, necesare pentru realizarea interfeței grafice, gestionarea evenimentelor și afișarea elementelor vizuale. Mai jos sunt prezentate toate funcțiile din pygame utilizate efectiv în cod, împreună cu rolul fiecăreia.
@@ -171,12 +172,8 @@ Metodă utilizată pentru a seta transparența unei suprafețe grafice. În proi
 - **`Surface.fill()`**
 Această metodă umple o suprafață cu o culoare specifică. Este utilizată atât pentru fundalul ferestrei, cât și pentru suprafețele de tip overlay.
 
-- **`Surface.blit()`**
-Metoda `blit` copiază o suprafață grafică (text sau imagine) pe o altă suprafață. Este esențială pentru afișarea textului, imaginilor și a elementelor grafice pe ecran.
-
 - **`pygame.font.SysFont()`**
 Această funcție creează un obiect de tip font folosind un font de sistem. În proiect, este utilizată pentru afișarea textului, scorurilor și mesajelor informative.
-
 
 - **`font.render`**
   Metoda `font.render` este folosită pentru transformarea textului (de exemplu scorul, valorile numerice sau mesajele afișate) într-o suprafață grafică ce poate fi desenată pe ecran. Această metodă permite controlul fontului, al culorii și al netezirii marginilor textului, asigurând lizibilitate și un contrast corespunzător față de fundal.
@@ -231,11 +228,6 @@ Funcția afișează un ecran de tip splash la pornirea aplicației.
 Aceasta încarcă și afișează o imagine reprezentativă pentru joc și așteaptă o acțiune din partea utilizatorului (tastă sau click) pentru a continua.
 
 Fisierul `obstacole_options.py` contine urmatoarele functii:
-- `get_obstacle_count(board_size, difficulty)`
-
-Această funcție calculează numărul de obstacole ce vor fi plasate pe tabla de joc, în funcție de dimensiunea tablei și de dificultatea aleasă.
-Funcția permite scalarea corectă a dificultății pentru diferite dimensiuni ale tablei.
-
 - `choose_obstacle_mode(screen)`
 
 Funcția afișează un ecran de selecție care permite utilizatorului să aleagă între modul de joc normal și modul cu obstacole.
@@ -261,8 +253,6 @@ Valoarea returnată este utilizată ulterior pentru controlul desfășurării jo
 O primă dificultate întâmpinată a fost **gestionarea corectă a evenimentelor de la tastatură și mouse în biblioteca pygame**. Inițial, anumite apăsări de taste nu erau recunoscute sau produceau comportamente neașteptate. Această problemă a fost rezolvată prin utilizarea funcției `pygame.event.get()` și prin tratarea explicită a evenimentelor de tip `pygame.KEYDOWN` și `pygame.MOUSEBUTTONDOWN`, separând logica de input pentru fiecare ecran al aplicației.
 
 O altă dificultate a fost **centrarea corectă a textului și a elementelor grafice pe ecran**, indiferent de dimensiunea ferestrei. Poziționarea manuală a elementelor ducea la erori vizuale. Am rezolvat această problemă prin utilizarea obiectelor `pygame.Rect` și a metodei `get_rect(center=...)`, care permit poziționarea dinamică și precisă a elementelor grafice.
-
-De asemenea, **echilibrarea dificultății jocului**, în special în modul cu obstacole, a reprezentat o provocare. Numărul de obstacole trebuia adaptat atât la dimensiunea tablei, cât și la nivelul de dificultate ales. Această problemă a fost rezolvată prin implementarea unei funcții dedicate care calculează automat numărul de obstacole în funcție de acești parametri.
 
 O dificultate suplimentară a fost **afișarea overlay-urilor pentru stările de Game Over și Win**, fără a afecta vizibilitatea tablei de joc. Inițial, overlay-urile acopereau complet elementele grafice. Am rezolvat această problemă prin utilizarea suprafețelor `pygame.Surface` și setarea transparenței acestora cu metoda `set_alpha`.
 
