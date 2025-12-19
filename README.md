@@ -28,8 +28,7 @@ Față de implementarea clasică, aplicația oferă funcționalități supliment
 
 ##  Contributie proiect - Diana Artic
 
-In cadrul acestui proiect am contribuit la dezvoltarea jocului 2048, fiind implicata in special in implementarea logicii de initializare a jocului, a regulilor de mutare, precum si a sistemelor de configurare si dificultate. Accentul a fost pus pe separarea clara intre logica jocului si interfata grafica, pentru a obtine un cod clar.
----
+In cadrul acest proiect am contribuit la dezvoltarea jocului 2048, fiind implicata in special in implementarea logicii de initializare a jocului, a regulilor de mutare, precum si a sistemelor de configurare si dificultate. Accentul a fost pus pe separatea clara intre logica jocului si interfata grafica, pentru a obtine un cod clar.
 
 ## Initializarea jocului 2048
 
