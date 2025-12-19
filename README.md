@@ -141,16 +141,16 @@ Acest eveniment este declansat atunci cand utilizatorul apasa o tasta. Este util
 - **`get_width()`**
   Returneaza latimea unei suprafete (de exemplu fereastra sau un text), exprimata in pixeli.
 
--**`get_height()`**
+- **`get_height()`**
   Returneaza inaltimea unei suprafete, exprimata in pixeli.
 
--**`pygame.time.get_ticks()`**
+- **`pygame.time.get_ticks()`**
   Returneaza cate milisecunde au trecut de cand a fost apelat pygame.init()
 
--**`pygame.display.set_mode`**
+- **`pygame.display.set_mode`**
 Creeaza fereastra in care ruleaza jocul.
 
--**`pygame.display.set_caption`**
+- **`pygame.display.set_caption`**
 Seteaza numele ferestrei.
 
 - **`pygame.font.SysFont()`**
