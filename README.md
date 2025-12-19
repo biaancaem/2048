@@ -152,7 +152,7 @@ Metodă care limitează numărul de cadre pe secundă. În proiect, este utiliza
 - **`blit`**
   Metoda `blit` este utilizată pentru a copia o suprafață grafică (imagine, text sau overlay) pe suprafața principală a ferestrei de joc. În cadrul proiectului, `blit` este folosit pentru afișarea textului, a imaginilor și a suprapunerilor grafice (overlay-uri) precum ecranele de Game Over sau Win. Această metodă este esențială pentru afișarea finală a tuturor elementelor grafice pe ecran.
 
-## ** Descrierea functiilor implementate**
+## Descrierea functiilor implementate
 In cadrul acestui proiect au fost implementate mai multe functii,fiecare avand un rol bine definit in realizarea interfetei grafice.
 Fisierul `graphics.py` contine urmatoarele functii:
 
@@ -161,7 +161,7 @@ Fisierul `graphics.py` contine urmatoarele functii:
 Funcția ia în considerare dimensiunea casetelor, spațiul dintre acestea și înălțimea panoului de informații, asigurând afișarea corectă a tuturor elementelor grafice.  
 Rezultatul returnat este un tuplu format din lățimea și înălțimea ferestrei.
 
-- `draw_board(screen, board, font, score, best_score, moves_left, remaining_time, timed_mode, game_over, is_new_best, has_won, win_screen_active)`
+-`draw_board(screen, board, font, score, best_score, moves_left, remaining_time, timed_mode, game_over, is_new_best, has_won, win_screen_active)`
 
 Aceasta este funcția principală de desenare a jocului.
 Rolul său este de a reda vizual starea curentă a jocului la fiecare actualizare a ecranului.
@@ -173,12 +173,12 @@ Funcția realizează următoarele operații:
 - afișează valorile numerice și obstacolele;
 - afișează overlay-urile pentru stările GAME OVER și YOU WIN.
 
--`show_start_screen(screen)`
+- `show_start_screen(screen)`
 
 Această funcție afișează ecranul de start al jocului, care conține titlul, regulile jocului și opțiunile pentru alegerea dimensiunii tablei.  
 Interacțiunea se face prin tastatură, iar funcția returnează dimensiunea tablei selectate de utilizator.
 
--`show_logo_screen(screen)`
+- `show_logo_screen(screen)`
 
 Funcția afișează un ecran de tip splash la pornirea aplicației.  
 Aceasta încarcă și afișează o imagine reprezentativă pentru joc și așteaptă o acțiune din partea utilizatorului (tastă sau click) pentru a continua.
